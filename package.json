@@ -1,0 +1,39 @@
+{
+  "name": "sniffer",
+  "version": "1.0.0",
+  "description": "A browser sniffing util",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "browserify test/index.js | tap-closer | smokestack | faucet",
+    "test-debug": "budo test/index.js --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/watsondg/sniffer.git"
+  },
+  "keywords": [
+    "browser",
+    "sniffing",
+    "detect",
+    "device",
+    "os"
+  ],
+  "author": "Florian Morel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watsondg/sniffer/issues"
+  },
+  "homepage": "https://github.com/watsondg/sniffer#readme",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "smokestack": "^3.4.1",
+    "tap-closer": "^1.0.0",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "dashify": "^0.2.2"
+  }
+}
