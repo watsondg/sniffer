@@ -44,10 +44,13 @@ Return an object containing all the sniffing properties.
 ### isIos
 ### isDroid
 ### isDroidTablet
+### isEdge
 ### isIE
 ### isIE11
 ### isFirefox
 ### isSafari
+### isOpera
+### isChrome
 
 ## License
 MIT.

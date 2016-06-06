@@ -16,17 +16,23 @@ function Sniffer() {
     var isTablet = (isDroidTablet || (/ipad/i).test(ua)) && !window.MSStream;
     var isFirefox = ua.indexOf('firefox') > -1;
     var isSafari = !!ua.match(/version\/[\d\.]+.*safari/);
+    var isOpera = ua.indexOf('opr') > -1;
+    var isEdge = ua.indexOf('edge') > -1;
+    var isChrome = window.chrome !== null && window.chrome !== undefined && navigator.vendor.toLowerCase() == 'google inc.' && !isOpera && !isEdge;
 
     this.infos = {
         isDroid: isDroid,
         isDroidTablet: isDroidTablet,
         isIos: isIos,
+        isEdge: isEdge,
         isIE: isIE,
         isIE11: isIE11,
         isPhone: isPhone,
         isTablet: isTablet,
         isFirefox: isFirefox,
         isSafari: isSafari,
+        isOpera: isOpera,
+        isChrome: isChrome,
         isDesktop: !isPhone && !isTablet
     };
 
