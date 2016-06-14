@@ -7,23 +7,33 @@ module.exports = new Sniffer();
 function Sniffer() {
     var ua = navigator.userAgent.toLowerCase();
     var av = navigator.appVersion.toLowerCase();
-    var isIE11 = !(window.ActiveXObject) && "ActiveXObject" in window;
-    var isIE = av.indexOf('msie') > -1 || isIE11 || av.indexOf('edge') > -1;
-    var isDroid = (/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i).test(ua);
+
+    var isDroidPhone = /android.*mobile/.test(ua);
+    var isDroidTablet = !isDroidPhone && (/android/i).test(ua);
+    var isDroid = isDroidPhone || isDroidTablet;
+
     var isIos = (/ip(hone|od|ad)/i).test(ua) && !window.MSStream;
-    var isDroidTablet = !isDroid && (/android/i).test(ua);
-    var isPhone = isDroid || isIos;
-    var isTablet = (isDroidTablet || (/ipad/i).test(ua)) && !window.MSStream;
+    var isIpad = (/ipad/i).test(ua) && isIos;
+
+    var isTablet = isDroidTablet || isIpad;
+    var isPhone = isDroid || (isIos && !isIpad);
+    var isDevice = isPhone || isTablet;
+
     var isFirefox = ua.indexOf('firefox') > -1;
     var isSafari = !!ua.match(/version\/[\d\.]+.*safari/);
     var isOpera = ua.indexOf('opr') > -1;
+    var isIE11 = !(window.ActiveXObject) && "ActiveXObject" in window;
+    var isIE = av.indexOf('msie') > -1 || isIE11 || av.indexOf('edge') > -1;
     var isEdge = ua.indexOf('edge') > -1;
     var isChrome = window.chrome !== null && window.chrome !== undefined && navigator.vendor.toLowerCase() == 'google inc.' && !isOpera && !isEdge;
 
     this.infos = {
         isDroid: isDroid,
+        isDroidPhone: isDroidPhone,
         isDroidTablet: isDroidTablet,
         isIos: isIos,
+        isIpad: isIpad,
+        isDevice: isDevice,
         isEdge: isEdge,
         isIE: isIE,
         isIE11: isIE11,

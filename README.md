@@ -38,15 +38,22 @@ Return an object containing all the sniffing properties.
 
 ## Instance Properties
 
-### isPhone
-### isTablet
-### isDesktop
-### isIos
-### isDroid
-### isDroidTablet
 ### isEdge
 ### isIE
 ### isIE11
+
+### isDroid
+### isDroidTablet
+### isDroidPhone
+
+### isIos
+### isIpad
+
+### isTablet
+### isPhone
+### isDevice `(isPhone && isTablet)``
+
+### isDesktop
 ### isFirefox
 ### isSafari
 ### isOpera
