@@ -51,7 +51,7 @@ Return an object containing all the sniffing properties.
 
 ### isTablet
 ### isPhone
-### isDevice `(isPhone && isTablet)``
+### isDevice `(isPhone && isTablet)`
 
 ### isDesktop
 ### isFirefox
