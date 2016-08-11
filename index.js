@@ -16,7 +16,7 @@ function Sniffer() {
     var isIpad = (/ipad/i).test(ua) && isIos;
 
     var isTablet = isDroidTablet || isIpad;
-    var isPhone = isDroid || (isIos && !isIpad);
+    var isPhone = isDroidPhone || (isIos && !isIpad);
     var isDevice = isPhone || isTablet;
 
     var isFirefox = ua.indexOf('firefox') > -1;
