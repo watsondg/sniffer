@@ -17,6 +17,9 @@ test('Browsers test', function(assert) {
 
     assert.notOk((sniffer.isIE || sniffer.isFirefox) && sniffer.isIE === sniffer.isFirefox, 'Shouldnt be both IE and firefox.');
 
+    assert.notOk(sniffer.isIos && sniffer.isWindowsPhone, 'Shouldnt be both iOS and Windows Mobile.');
+    assert.notOk(sniffer.isDroid && sniffer.isWindowsPhone, 'Shouldnt be both Android and Windows Mobile.');
+
     assert.end();
 });
 

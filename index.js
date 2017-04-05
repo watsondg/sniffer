@@ -8,15 +8,17 @@ function Sniffer() {
     var ua = navigator.userAgent.toLowerCase();
     var av = navigator.appVersion.toLowerCase();
 
-    var isDroidPhone = /android.*mobile/.test(ua);
-    var isDroidTablet = !isDroidPhone && (/android/i).test(ua);
+    var isWindowsPhone = /windows phone|iemobile|wpdesktop/.test(ua);
+
+    var isDroidPhone = !isWindowsPhone && /android.*mobile/.test(ua);
+    var isDroidTablet = !isWindowsPhone && !isDroidPhone && (/android/i).test(ua);
     var isDroid = isDroidPhone || isDroidTablet;
 
-    var isIos = (/ip(hone|od|ad)/i).test(ua) && !window.MSStream;
-    var isIpad = (/ipad/i).test(ua) && isIos;
+    var isIos = !isWindowsPhone && (/ip(hone|od|ad)/i).test(ua) && !window.MSStream;
+    var isIpad = !isWindowsPhone && (/ipad/i).test(ua) && isIos;
 
     var isTablet = isDroidTablet || isIpad;
-    var isPhone = isDroidPhone || (isIos && !isIpad);
+    var isPhone = isDroidPhone || (isIos && !isIpad) || isWindowsPhone;
     var isDevice = isPhone || isTablet;
 
     var isFirefox = ua.indexOf('firefox') > -1;
@@ -31,6 +33,7 @@ function Sniffer() {
         isDroid: isDroid,
         isDroidPhone: isDroidPhone,
         isDroidTablet: isDroidTablet,
+        isWindowsPhone: isWindowsPhone,
         isIos: isIos,
         isIpad: isIpad,
         isDevice: isDevice,
